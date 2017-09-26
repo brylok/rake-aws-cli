@@ -19,6 +19,12 @@ rake s3:create:bucket bucket=some-bucket-123
 rake s3:create:website bucket=test123.com profile=emptyset
 ```
 
+#### List all buckets
+
+```sh
+rake listbuckets profile=emptyset
+```
+
 --------
 
 ## Route53 Commands
@@ -26,7 +32,7 @@ rake s3:create:website bucket=test123.com profile=emptyset
 #### List all buckets
 
 ```sh
-rake listbuckets profile=emptyset
+rake listhostedzones profile=emptyset
 ```
 
 --------
