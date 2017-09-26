@@ -10,13 +10,33 @@ Note: You must pass a bucket but passing a profile is optional.  The default pro
 #### Create an s3 bucket
 
 ```sh
-rake create:website bucket=some-bucket-123
+rake s3:create:bucket bucket=some-bucket-123
 ```
 
 #### Create an S3 bucket and setup for hosting a website
 
 ```sh
-rake create:website bucket=test123.com profile=emptyset
+rake s3:create:website bucket=test123.com profile=emptyset
+```
+
+--------
+
+## Route53 Commands
+
+#### List all buckets
+
+```sh
+rake listbuckets profile=emptyset
+```
+
+--------
+
+## IAM Commands
+
+#### Create an IAM user and create access keys
+
+```sh
+rake iam:create:user username=Bob profile=emptyset
 ```
 
 
