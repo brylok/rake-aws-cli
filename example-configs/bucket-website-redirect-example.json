@@ -1,12 +1,6 @@
 {
-  "IndexDocument": {
-      "Suffix": "index.html"
-  },
-  "ErrorDocument": {
-      "Key": "error.html"
-  },
   "RedirectAllRequestsTo": {
     "HostName": "exampledomain.com",
     "Protocol": "http"
-  },
+  }
 }

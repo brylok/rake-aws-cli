@@ -1,5 +1,6 @@
 # SETTINGS
 default_profile = 'emptyset'
+default_forward_address = 'yolotest123.com'
 
 # S3
 # CREATE
@@ -21,6 +22,17 @@ task :s3definewebsite do
   sh "aws s3api put-bucket-website --bucket #{bucket_name} --website-configuration file://example-configs/bucket-website-example.json --profile #{profile_name}"
 end
 
+# example usage: `rake s3createforwarder bucket=test123`
+desc 'Creating an s3 bucket for forwarding www -> non-www'
+task :s3createforwarder do
+  bucket_name = ENV['bucket']
+  profile_name = ENV['profile'] || default_profile
+  forward_target = ENV['forward'] || default_forward_address
+  website_config = '{"RedirectAllRequestsTo": {"HostName": "#{forward_target}"}}'
+  puts '## Making Bucket a Forwarder -- #{bucket_name}'
+  sh "aws s3api put-bucket-website --bucket #{bucket_name} --website-configuration '#{website_config}' --profile emptyset"
+end
+
 # wrapper create command for chaining subcommands
 # example usage: `rake s3:create:website bucket=test123 profile=emptyset`
 namespace :s3 do
@@ -34,11 +46,17 @@ namespace :s3 do
     task website: [:s3createbucket, :s3definewebsite] do
       puts '## Website Created ##'
     end
+
+    desc 'Create an s3 bucket and setup forwarding to another bucket'
+    task forwarder: [:s3createforwarder] do
+      puts '## Website Forwarder Created ##'
+    end
   end
 end
 
 
 # ROUTE53
+# example usage: `rake route53listzones profile=emptyset`
 desc 'List all hosted zones owned by this profile'
 task :route53listhostedzones do
   profile_name = ENV['profile'] || default_profile

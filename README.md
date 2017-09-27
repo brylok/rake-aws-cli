@@ -50,4 +50,8 @@ rake iam:create:user username=Bob profile=emptyset
 
 Reference:
 
-[Route53 Reference](https://realguess.net/2013/12/06/amazon-route-53-via-command-line/)
+[Route53 via CLI Reference](https://realguess.net/2013/12/06/amazon-route-53-via-command-line/)
+
+[S3 via CLI Reference](https://snippets.aktagon.com/snippets/679-how-to-use-the-aws-command-line-interface)
+
+[Hugo hosting on AWS, Detailed Guide](https://lustforge.com/2016/02/27/hosting-hugo-on-aws/)
