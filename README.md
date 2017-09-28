@@ -7,6 +7,12 @@ This is a set of Rake tasks designed to make workign with AWS easier.  To use th
 
 Note: You must pass a bucket but passing a profile is optional.  The default profile is set at the top of the Rakefile.
 
+#### Create a website and www-forwarder bucket
+
+```sh
+rake s3:setup:fullwebsite bucket=sometestwebsite.com profile=emptyset
+```
+
 #### Create an s3 bucket
 
 ```sh
