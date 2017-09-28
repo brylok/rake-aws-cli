@@ -1,13 +1,3 @@
-# SETTINGS
-default_profile = 'emptyset'
-default_forward_address = 'yolotest123.com'
-
-# REQUIRE
-# TO-DO: Break file down to use includes. None of methods below are working.
-# Rake.add_rakelib 'tasks'
-# Dir.glob('./lib/tasks/*.rake').each { |r| load r}
-# require 'lib/tasks/s3'
-
 # S3
 # CREATE
 # example usage: `rake s3createbucket bucket=test123`
@@ -91,58 +81,6 @@ namespace :s3 do
       "s3createforwarderwww"
     ] do
       puts 'Coming Soon'
-    end
-  end
-end
-
-
-# ROUTE53
-# example usage: `rake route53listzones profile=emptyset`
-desc 'List all hosted zones owned by this profile'
-task :route53listhostedzones do
-  profile_name = ENV['profile'] || default_profile
-  puts 'Retrieving list of all buckets'
-  sh "aws route53 list-hosted-zones --profile #{profile_name}"
-end
-
-
-# wrapper create command for chaining subcommands
-# example usage: `rake route53:listzones profile=emptyset`
-namespace :route53 do
-  task listzones: [:route53listhostedzones] do
-    puts '## ZONE LIST COMPLETE ##'
-  end
-end
-
-
-
-# IAM
-# example usage: `rake iamcreateuser username=Bob profile=emptyset`
-desc 'Create an IAM User'
-task :iamcreateuser do
-  profile_name = ENV['profile'] || default_profile
-  user_name = ENV['username']
-  puts 'Creating IAM User'
-  sh "aws iam create-user --user-name #{user_name} --profile #{profile_name}"
-end
-
-# example usage: `rake iamcreatekeys username=Bob profile=emptyset`
-desc 'Create keys for the IAM User'
-task :iamcreatekeys do
-  profile_name = ENV['profile'] || default_profile
-  user_name = ENV['username']
-  puts 'Creating Keys for IAM User'
-  sh "aws iam create-access-key --user-name #{user_name} --profile #{profile_name}"
-end
-
-
-# wrapper create command for chaining subcommands
-# example usage: `rake iam:create:user username=Bob profile=emptyset`
-namespace :iam do
-  namespace :create do
-    task user: [:iamcreateuser, :iamcreatekeys] do
-      puts '## USER & KEYS CREATED ##'
-      puts 'MAKE SURE TO COPY DOWN THE KEYS!!'
     end
   end
 end

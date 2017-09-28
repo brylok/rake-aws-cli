@@ -48,6 +48,15 @@ rake iam:create:user username=Bob profile=emptyset
 
 
 
+## HOW-TO
+
+#### Setup s3 for hosting
+```sh
+rake s3:create:website bucket=test123.com profile=emptyset | rake s3:create:forwarder bucket=www.test123.com forward=test123.com profile=emptyset
+```
+
+
+
 Reference:
 
 [Route53 via CLI Reference](https://realguess.net/2013/12/06/amazon-route-53-via-command-line/)
