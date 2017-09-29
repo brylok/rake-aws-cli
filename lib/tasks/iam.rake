@@ -3,7 +3,7 @@
 
 namespace :iam do
   namespace :create do
-    # example usage: `rake s3:create:website bucket=test123 profile=emptyset`
+    # example usage: `rake iam:create:user username=Bob profile=emptyset`
     desc 'Create an IAM user as well as their keys'
     task user: ["iamhelper:createuser", "iamhelper:createkeys"] do
       puts '## User Created ##'
