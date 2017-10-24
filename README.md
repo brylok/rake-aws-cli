@@ -1,4 +1,4 @@
-# BryLok AWS Toolkit
+# AWS Toolkit
 
 This is a set of Rake tasks designed to make working with AWS easier.  To use this you will need to have the [aws-cli](https://aws.amazon.com/cli/) [installed](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) and [configured](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) as well as [Rake](https://github.com/ruby/rake#installation). To use the ElasticBeanstalk sections you will also need to [install](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html) and [configure](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-configuration.html) the [eb-cli](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cmd-commands.html).
 
